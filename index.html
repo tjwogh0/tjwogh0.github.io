@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic 2-Tier Rubber Duck</title>
+    <title>두두의 장난 페이지</title>
     <style>
         body { margin: 0; padding: 0; background: linear-gradient(180deg, #87CEEB 0%, #E0F7FA 100%); display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; font-family: sans-serif; }
         .container { width: 100%; max-width: 900px; height: auto; position: relative; }
@@ -11,12 +11,14 @@
         @keyframes wave { 0% { transform: translateX(0); } 100% { transform: translateX(-400px); } }
         @keyframes wave-reverse { 0% { transform: translateX(-400px); } 100% { transform: translateX(0); } }
         @keyframes cloud-move { 0% { transform: translateX(-100px); opacity: 0.8; } 50% { opacity: 1; } 100% { transform: translateX(900px); opacity: 0.8; } }
+        @keyframes emoji-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
         .duck-group { animation: float 3.5s ease-in-out infinite; transform-origin: 400px 360px; }
         .wave-layer-1 { animation: wave 4s linear infinite; }
         .wave-layer-2 { animation: wave-reverse 5s linear infinite; }
         .wave-layer-3 { animation: wave 7s linear infinite; }
         .cloud-1 { animation: cloud-move 25s linear infinite; }
         .cloud-2 { animation: cloud-move 35s linear infinite; animation-delay: -15s; }
+        .emojis { animation: emoji-bob 2.5s ease-in-out infinite; }
     </style>
 </head>
 <body>
@@ -47,30 +49,25 @@
 
             <!-- 오리 그룹 (장식 제거, 2단 구조) -->
             <g class="duck-group" filter="url(#shadow)">
-                <!-- 꼬리 -->
                 <path d="M 230 370 C 130 290 140 240 190 400 Z" fill="url(#duckGrad)"/>
-                
-                <!-- 몸통 (2단) -->
                 <ellipse cx="380" cy="370" rx="180" ry="105" fill="url(#duckGrad)"/>
-                
-                <!-- 머리 (몸통과 바로 연결) -->
                 <circle cx="480" cy="240" r="85" fill="url(#duckGrad)"/>
-                
-                <!-- 날개 (단순한 버전으로 복구) -->
                 <path d="M 290 360 C 310 280 430 310 440 380 C 450 440 270 430 290 360 Z" fill="#F9A825" stroke="#F57F17" stroke-width="3" opacity="0.9"/>
                 <path d="M 330 370 Q 380 340 400 390" fill="none" stroke="#F57F17" stroke-width="3" stroke-linecap="round"/>
-                
-                <!-- 눈 (단순한 원형 하이라이트 1개) -->
                 <circle cx="510" cy="210" r="12" fill="#212121"/>
                 <circle cx="505" cy="205" r="4" fill="#FFFFFF"/>
-                
-                <!-- 부리 (단순한 버전으로 복구, 머리 위치에 맞춤) -->
                 <path d="M 555 220 C 640 210 655 250 640 265 C 595 275 560 265 545 255 Z" fill="url(#beakGrad)" stroke="#E65100" stroke-width="2"/>
                 <path d="M 545 255 C 605 275 600 300 575 295 C 555 290 530 275 525 265 Z" fill="#EF6C00" stroke="#E65100" stroke-width="2"/>
             </g>
 
             <path class="wave-layer-2" d="M -800 450 Q -700 490 -600 450 T -400 450 T -200 450 T 0 450 T 200 450 T 400 450 T 600 450 T 800 450 T 1000 450 T 1200 450 L 1200 600 L -800 600 Z" fill="url(#water2)"/>
             <path class="wave-layer-1" d="M -400 490 Q -300 460 -200 490 T 0 490 T 200 490 T 400 490 T 600 490 T 800 490 T 1000 490 T 1200 490 L 1200 600 L -400 600 Z" fill="url(#water1)"/>
+
+            <!-- 사자, 오리 이모지 (오리를 가리지 않도록 캔버스 하단 파도 위에 배치) -->
+            <g class="emojis">
+                <text x="250" y="550" font-size="60" text-anchor="middle">🦁</text>
+                <text x="550" y="550" font-size="60" text-anchor="middle">🦆</text>
+            </g>
         </svg>
     </div>
 </body>
