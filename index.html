@@ -2,70 +2,279 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>두두의 장난 페이지</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#fff8f1">
+    <title>두기의 탄생까지</title>
     <style>
-        body { margin: 0; padding: 0; background: linear-gradient(180deg, #87CEEB 0%, #E0F7FA 100%); display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; font-family: sans-serif; }
-        .container { width: 100%; max-width: 900px; height: auto; position: relative; }
-        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(3deg); } }
-        @keyframes wave { 0% { transform: translateX(0); } 100% { transform: translateX(-400px); } }
-        @keyframes wave-reverse { 0% { transform: translateX(-400px); } 100% { transform: translateX(0); } }
-        @keyframes cloud-move { 0% { transform: translateX(-100px); opacity: 0.8; } 50% { opacity: 1; } 100% { transform: translateX(900px); opacity: 0.8; } }
-        @keyframes emoji-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        .duck-group { animation: float 3.5s ease-in-out infinite; transform-origin: 400px 360px; }
-        .wave-layer-1 { animation: wave 4s linear infinite; }
-        .wave-layer-2 { animation: wave-reverse 5s linear infinite; }
-        .wave-layer-3 { animation: wave 7s linear infinite; }
-        .cloud-1 { animation: cloud-move 25s linear infinite; }
-        .cloud-2 { animation: cloud-move 35s linear infinite; animation-delay: -15s; }
-        .emojis { animation: emoji-bob 2.5s ease-in-out infinite; }
+        :root {
+            --ink: #332c2a;
+            --muted: #8f827b;
+            --accent: #f28b6b;
+            --card: rgba(255, 255, 255, 0.72);
+            --line: rgba(70, 55, 45, 0.08);
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body { min-height: 100%; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: var(--ink);
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+            background:
+                radial-gradient(circle at 15% 12%, rgba(255, 215, 187, .75), transparent 30%),
+                radial-gradient(circle at 88% 85%, rgba(207, 231, 255, .8), transparent 34%),
+                linear-gradient(145deg, #fffaf5 0%, #fff4ed 48%, #eef6ff 100%);
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: .28;
+            pointer-events: none;
+        }
+
+        body::before {
+            background: #ffd9c9;
+            top: -110px;
+            left: -80px;
+        }
+
+        body::after {
+            background: #cce4ff;
+            right: -100px;
+            bottom: -120px;
+        }
+
+        .page {
+            width: min(92vw, 430px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            position: relative;
+            padding: 34px 24px 28px;
+            text-align: center;
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, .9);
+            border-radius: 32px;
+            box-shadow:
+                0 24px 70px rgba(91, 68, 55, .14),
+                inset 0 1px 0 rgba(255,255,255,.8);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .animals {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-size: 2.35rem;
+            line-height: 1;
+            margin-bottom: 22px;
+        }
+
+        .animal {
+            display: inline-block;
+            animation: float 3.6s ease-in-out infinite;
+        }
+
+        .animal:nth-child(2) {
+            animation-delay: -.8s;
+        }
+
+        .title {
+            margin: 0;
+            font-size: clamp(1.35rem, 6vw, 1.7rem);
+            font-weight: 700;
+            letter-spacing: -.045em;
+            line-height: 1.5;
+        }
+
+        .name {
+            display: inline-block;
+            margin: 4px 2px;
+            font-size: clamp(2rem, 10vw, 2.65rem);
+            font-weight: 900;
+            letter-spacing: -.07em;
+            background: linear-gradient(135deg, #ed765a, #e9a13d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .baby {
+            font-size: 1.55rem;
+            vertical-align: .08em;
+        }
+
+        .countdown-wrap {
+            margin: 24px 0 18px;
+            padding: 20px 12px 17px;
+            border-radius: 24px;
+            background: rgba(255,255,255,.62);
+            border: 1px solid var(--line);
+        }
+
+        .countdown {
+            margin: 0;
+            font-size: clamp(4.1rem, 22vw, 6.4rem);
+            line-height: .9;
+            font-weight: 900;
+            letter-spacing: -.075em;
+            color: var(--ink);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .days {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: .92rem;
+            font-weight: 600;
+            letter-spacing: .02em;
+        }
+
+        .family {
+            font-size: 1.65rem;
+            line-height: 1;
+            letter-spacing: .12em;
+            margin-top: 19px;
+        }
+
+        .date {
+            margin-top: 17px;
+            color: var(--muted);
+            font-size: .78rem;
+            letter-spacing: .08em;
+        }
+
+        .sparkle {
+            position: absolute;
+            color: #e9a13d;
+            font-size: .9rem;
+            animation: twinkle 2.4s ease-in-out infinite;
+        }
+
+        .s1 {
+            top: 24px;
+            left: 30px;
+        }
+
+        .s2 {
+            top: 54px;
+            right: 30px;
+            animation-delay: -.9s;
+        }
+
+        .s3 {
+            bottom: 34px;
+            left: 46px;
+            animation-delay: -.4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-7px) rotate(2deg);
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: .25;
+                transform: scale(.85);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.15);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animal,
+            .sparkle {
+                animation: none;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <radialGradient id="duckGrad" cx="30%" cy="30%" r="70%">
-                    <stop offset="0%" stop-color="#FFF59D"/>
-                    <stop offset="40%" stop-color="#FFEB3B"/>
-                    <stop offset="100%" stop-color="#F57F17"/>
-                </radialGradient>
-                <linearGradient id="beakGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#FF9800"/>
-                    <stop offset="100%" stop-color="#E65100"/>
-                </linearGradient>
-                <linearGradient id="water1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#4FC3F7" stop-opacity="0.9"/><stop offset="100%" stop-color="#0288D1" stop-opacity="0.9"/></linearGradient>
-                <linearGradient id="water2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#29B6F6" stop-opacity="0.75"/><stop offset="100%" stop-color="#01579B" stop-opacity="0.85"/></linearGradient>
-                <linearGradient id="water3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#81D4FA" stop-opacity="0.8"/><stop offset="100%" stop-color="#0277BD" stop-opacity="0.95"/></linearGradient>
-                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#01579B" flood-opacity="0.4"/></filter>
-            </defs>
+    <main class="page">
+        <section class="card" aria-label="두기 탄생 카운트다운">
 
-            <!-- 배경 요소 -->
-            <circle cx="680" cy="120" r="50" fill="#FFEE58" opacity="0.9"><animate attributeName="r" values="50;55;50" dur="4s" repeatCount="indefinite"/></circle>
-            <g class="cloud-1" fill="#FFFFFF"><path d="M 50 150 Q 70 120 110 140 Q 150 100 190 140 Q 230 130 240 170 L 50 170 Z" /></g>
-            <g class="cloud-2" fill="#FFFFFF" transform="scale(0.8) translate(300, -50)"><path d="M 50 150 Q 70 120 110 140 Q 150 100 190 140 Q 230 130 240 170 L 50 170 Z" /></g>
+            <span class="sparkle s1">✦</span>
+            <span class="sparkle s2">✧</span>
+            <span class="sparkle s3">✦</span>
 
-            <path class="wave-layer-3" d="M -400 400 Q -300 370 -200 400 T 0 400 T 200 400 T 400 400 T 600 400 T 800 400 T 1000 400 T 1200 400 L 1200 600 L -400 600 Z" fill="url(#water3)"/>
+            <div class="animals" aria-hidden="true">
+                <span class="animal">🦆</span>
+                <span class="animal">🦁</span>
+            </div>
 
-            <!-- 오리 그룹 (장식 제거, 2단 구조) -->
-            <g class="duck-group" filter="url(#shadow)">
-                <path d="M 230 370 C 130 290 140 240 190 400 Z" fill="url(#duckGrad)"/>
-                <ellipse cx="380" cy="370" rx="180" ry="105" fill="url(#duckGrad)"/>
-                <circle cx="480" cy="240" r="85" fill="url(#duckGrad)"/>
-                <path d="M 290 360 C 310 280 430 310 440 380 C 450 440 270 430 290 360 Z" fill="#F9A825" stroke="#F57F17" stroke-width="3" opacity="0.9"/>
-                <path d="M 330 370 Q 380 340 400 390" fill="none" stroke="#F57F17" stroke-width="3" stroke-linecap="round"/>
-                <circle cx="510" cy="210" r="12" fill="#212121"/>
-                <circle cx="505" cy="205" r="4" fill="#FFFFFF"/>
-                <path d="M 555 220 C 640 210 655 250 640 265 C 595 275 560 265 545 255 Z" fill="url(#beakGrad)" stroke="#E65100" stroke-width="2"/>
-                <path d="M 545 255 C 605 275 600 300 575 295 C 555 290 530 275 525 265 Z" fill="#EF6C00" stroke="#E65100" stroke-width="2"/>
-            </g>
+            <h1 class="title">
+                <span class="name">🦄두기</span>
+                <span class="baby">👶</span>
+                탄생까지
+            </h1>
 
-            <path class="wave-layer-2" d="M -800 450 Q -700 490 -600 450 T -400 450 T -200 450 T 0 450 T 200 450 T 400 450 T 600 450 T 800 450 T 1000 450 T 1200 450 L 1200 600 L -800 600 Z" fill="url(#water2)"/>
-            <path class="wave-layer-1" d="M -400 490 Q -300 460 -200 490 T 0 490 T 200 490 T 400 490 T 600 490 T 800 490 T 1000 490 T 1200 490 L 1200 600 L -400 600 Z" fill="url(#water1)"/>
+            <div class="countdown-wrap">
+                <div id="countdown" class="countdown" aria-live="polite">--</div>
+                <div class="days">D-DAY · 2027.01.16</div>
+            </div>
 
-            <!-- 사자, 오리 이모지 (오리를 가리지 않도록 캔버스 하단 파도 위에 배치) -->
-            <g class="emojis">
-                <text x="250" y="550" font-size="60" text-anchor="middle">🦁</text>
+            <div class="family" aria-hidden="true">👨‍👩‍👧</div>
+
+            <div class="date" id="today"></div>
+        </section>
+    </main>
+
+    <script>
+        const target = new Date('2027-01-16T00:00:00+09:00');
+        const countdown = document.getElementById('countdown');
+        const today = document.getElementById('today');
+
+        function update() {
+            const now = new Date();
+            const diff = target.getTime() - now.getTime();
+
+            const days = Math.max(
+                0,
+                Math.ceil(diff / 86400000)
+            );
+
+            countdown.textContent = days;
+
+            today.textContent = now.toLocaleDateString('ko-KR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        update();
+
+        setInterval(update, 60000);
+    </script>
+</body>
+</html>                <text x="250" y="550" font-size="60" text-anchor="middle">🦁</text>
                 <text x="550" y="550" font-size="60" text-anchor="middle">🦆</text>
             </g>
         </svg>
