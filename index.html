@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오리 페이지</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: white;
+            margin-top: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        svg {
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🦆 귀여운 오리 🦆</h1>
+        <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <!-- 물 -->
+            <ellipse cx="150" cy="250" rx="120" ry="30" fill="#4DB8FF" opacity="0.6"/>
+            
+            <!-- 오리 몸 -->
+            <ellipse cx="150" cy="140" rx="70" ry="85" fill="#FFD700"/>
+            
+            <!-- 오리 목 -->
+            <path d="M 150 60 Q 155 100 160 140" stroke="#FFD700" stroke-width="35" fill="none" stroke-linecap="round"/>
+            
+            <!-- 오리 머리 -->
+            <circle cx="155" cy="40" r="35" fill="#FFD700"/>
+            
+            <!-- 오리 부리 -->
+            <ellipse cx="185" cy="40" rx="25" ry="15" fill="#FF8C00"/>
+            <ellipse cx="195" cy="38" rx="8" ry="8" fill="#FFB347"/>
+            
+            <!-- 눈 -->
+            <circle cx="170" cy="30" r="6" fill="black"/>
+            <circle cx="172" cy="28" r="2" fill="white"/>
+            
+            <!-- 날개 -->
+            <path d="M 110 130 Q 80 120 85 160" stroke="#FFA500" stroke-width="20" fill="none" stroke-linecap="round"/>
+            <path d="M 190 130 Q 220 120 215 160" stroke="#FFA500" stroke-width="20" fill="none" stroke-linecap="round"/>
+            
+            <!-- 다리 -->
+            <line x1="130" y1="220" x2="130" y2="250" stroke="#FF6B35" stroke-width="12" stroke-linecap="round"/>
+            <line x1="170" y1="220" x2="170" y2="250" stroke="#FF6B35" stroke-width="12" stroke-linecap="round"/>
+            
+            <!-- 발 -->
+            <circle cx="130" cy="255" r="12" fill="#FF6B35"/>
+            <circle cx="170" cy="255" r="12" fill="#FF6B35"/>
+        </svg>
+    </div>
+</body>
+</html>
