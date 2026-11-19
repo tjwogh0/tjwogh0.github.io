@@ -1,278 +1,342 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#fff8f1">
-    <title>두기의 탄생까지</title>
-    <style>
-        :root {
-            --ink: #332c2a;
-            --muted: #8f827b;
-            --accent: #f28b6b;
-            --card: rgba(255, 255, 255, 0.72);
-            --line: rgba(70, 55, 45, 0.08);
-        }
-
-        * { box-sizing: border-box; }
-
-        html, body { min-height: 100%; }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            color: var(--ink);
-            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-            background:
-                radial-gradient(circle at 15% 12%, rgba(255, 215, 187, .75), transparent 30%),
-                radial-gradient(circle at 88% 85%, rgba(207, 231, 255, .8), transparent 34%),
-                linear-gradient(145deg, #fffaf5 0%, #fff4ed 48%, #eef6ff 100%);
-        }
-
-        body::before,
-        body::after {
-            content: "";
-            position: fixed;
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            filter: blur(2px);
-            opacity: .28;
-            pointer-events: none;
-        }
-
-        body::before {
-            background: #ffd9c9;
-            top: -110px;
-            left: -80px;
-        }
-
-        body::after {
-            background: #cce4ff;
-            right: -100px;
-            bottom: -120px;
-        }
-
-        .page {
-            width: min(92vw, 430px);
-            position: relative;
-            z-index: 1;
-        }
-
-        .card {
-            position: relative;
-            padding: 34px 24px 28px;
-            text-align: center;
-            background: var(--card);
-            border: 1px solid rgba(255, 255, 255, .9);
-            border-radius: 32px;
-            box-shadow:
-                0 24px 70px rgba(91, 68, 55, .14),
-                inset 0 1px 0 rgba(255,255,255,.8);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-        }
-
-        .animals {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            font-size: 2.35rem;
-            line-height: 1;
-            margin-bottom: 22px;
-        }
-
-        .animal {
-            display: inline-block;
-            animation: float 3.6s ease-in-out infinite;
-        }
-
-        .animal:nth-child(2) {
-            animation-delay: -.8s;
-        }
-
-        .title {
-            margin: 0;
-            font-size: clamp(1.35rem, 6vw, 1.7rem);
-            font-weight: 700;
-            letter-spacing: -.045em;
-            line-height: 1.5;
-        }
-
-        .name {
-            display: inline-block;
-            margin: 4px 2px;
-            font-size: clamp(2rem, 10vw, 2.65rem);
-            font-weight: 900;
-            letter-spacing: -.07em;
-            background: linear-gradient(135deg, #ed765a, #e9a13d);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .baby {
-            font-size: 1.55rem;
-            vertical-align: .08em;
-        }
-
-        .countdown-wrap {
-            margin: 24px 0 18px;
-            padding: 20px 12px 17px;
-            border-radius: 24px;
-            background: rgba(255,255,255,.62);
-            border: 1px solid var(--line);
-        }
-
-        .countdown {
-            margin: 0;
-            font-size: clamp(4.1rem, 22vw, 6.4rem);
-            line-height: .9;
-            font-weight: 900;
-            letter-spacing: -.075em;
-            color: var(--ink);
-            font-variant-numeric: tabular-nums;
-        }
-
-        .days {
-            margin-top: 10px;
-            color: var(--muted);
-            font-size: .92rem;
-            font-weight: 600;
-            letter-spacing: .02em;
-        }
-
-        .family {
-            font-size: 1.65rem;
-            line-height: 1;
-            letter-spacing: .12em;
-            margin-top: 19px;
-        }
-
-        .date {
-            margin-top: 17px;
-            color: var(--muted);
-            font-size: .78rem;
-            letter-spacing: .08em;
-        }
-
-        .sparkle {
-            position: absolute;
-            color: #e9a13d;
-            font-size: .9rem;
-            animation: twinkle 2.4s ease-in-out infinite;
-        }
-
-        .s1 {
-            top: 24px;
-            left: 30px;
-        }
-
-        .s2 {
-            top: 54px;
-            right: 30px;
-            animation-delay: -.9s;
-        }
-
-        .s3 {
-            bottom: 34px;
-            left: 46px;
-            animation-delay: -.4s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0);
-            }
-
-            50% {
-                transform: translateY(-7px) rotate(2deg);
-            }
-        }
-
-        @keyframes twinkle {
-            0%, 100% {
-                opacity: .25;
-                transform: scale(.85);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.15);
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .animal,
-            .sparkle {
-                animation: none;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f5f1">
+  <title>조각 배치 플래너</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #20231f;
+      --muted: #73776f;
+      --line: #e5e6df;
+      --paper: #fff;
+      --accent: #527b65;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f6f5f1;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    }
+    button { font: inherit; }
+    .app { width: min(100% - 32px, 840px); margin: 0 auto; padding: 48px 0 56px; }
+    header { margin-bottom: 24px; }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
+    h1 { margin: 0; font-size: clamp(25px, 5vw, 34px); letter-spacing: -.055em; }
+    .intro { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .workspace { display: grid; justify-items: center; gap: 18px; }
+    .board-shell { position: relative; width: min(100%, 515px); }
+    .board {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 515 / 470;
+      overflow: hidden;
+      border: 2px solid #343a34;
+      border-radius: 5px;
+      background-color: #fff;
+      background-image: linear-gradient(to right, #f0f1ec 1px, transparent 1px), linear-gradient(to bottom, #f0f1ec 1px, transparent 1px);
+      background-size: 5.825% 6.383%;
+      touch-action: none;
+      box-shadow: 0 12px 30px #2833260d;
+    }
+    .board-label { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 9px; color: var(--muted); font-size: 12px; }
+    .board-label strong { color: var(--ink); font-weight: 750; }
+    .piece {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      border: 1.5px solid currentColor;
+      border-radius: 3px;
+      font-size: clamp(11px, 2.2vw, 15px);
+      font-weight: 800;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+      box-shadow: 0 2px 6px #26312614;
+      transition: box-shadow .12s, filter .12s;
+    }
+    .piece:hover { filter: brightness(.98); }
+    .piece.dragging { z-index: 5; cursor: grabbing; box-shadow: 0 9px 22px #26312635; }
+    .piece.invalid { animation: nudge .22s ease-in-out 2; }
+    .piece .remove {
+      position: absolute;
+      top: 3px; right: 3px;
+      display: grid; place-items: center;
+      width: 22px; height: 22px;
+      padding: 0;
+      border: 0; border-radius: 50%;
+      background: #fffdf0d9; color: #41443d;
+      font-size: 15px; line-height: 1;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity .12s, background .12s;
+    }
+    .piece:hover .remove, .piece:focus-within .remove { opacity: 1; }
+    .remove:hover { background: white; }
+    .tip { margin: 0; color: var(--muted); font-size: 12px; text-align: center; }
+    .pieces-panel { width: 100%; padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+    .panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .panel-heading h2 { margin: 0; font-size: 15px; letter-spacing: -.02em; }
+    .count { color: var(--muted); font-size: 12px; }
+    .tray { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+    .tray-item {
+      display: flex; min-width: 0; min-height: 102px;
+      flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+      padding: 10px 5px;
+      border: 1px solid #e8e9e3; border-radius: 8px;
+      background: #fcfcfa; color: var(--ink);
+      cursor: grab; touch-action: none; user-select: none;
+      transition: border-color .15s, background .15s, transform .15s;
+    }
+    .tray-item:hover { border-color: #a9b8aa; background: #f8faf6; }
+    .tray-item:active { cursor: grabbing; }
+    .tray-item:focus-visible, button:focus-visible { outline: 3px solid #88a990; outline-offset: 2px; }
+    .mini-piece { display: grid; place-items: center; max-width: 100%; max-height: 54px; border: 1px solid currentColor; border-radius: 2px; font-size: 10px; font-weight: 800; }
+    .tray-label { font-size: 12px; font-weight: 750; }
+    .tray-dims { color: var(--muted); font-size: 10px; white-space: nowrap; }
+    .actions { display: flex; justify-content: center; margin-top: 16px; }
+    .clear-button { padding: 9px 15px; border: 1px solid #d9dcd4; border-radius: 7px; background: transparent; color: #555b53; font-size: 13px; font-weight: 700; cursor: pointer; }
+    .clear-button:hover:not(:disabled) { border-color: #aa756b; color: #9c5145; background: #fff9f7; }
+    .clear-button:disabled { opacity: .4; cursor: not-allowed; }
+    .toast { min-height: 20px; margin: 10px 0 0; color: #a34f43; font-size: 12px; text-align: center; }
+    @keyframes nudge { 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
+    @media (max-width: 600px) {
+      .app { width: min(100% - 24px, 515px); padding-top: 30px; }
+      .pieces-panel { padding: 14px 10px; }
+      .tray { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+      .tray-item { min-height: 92px; }
+      .piece .remove { opacity: 1; width: 19px; height: 19px; font-size: 13px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
 </head>
-
 <body>
-    <main class="page">
-        <section class="card" aria-label="두기 탄생 카운트다운">
+  <main class="app">
+    <header>
+      <p class="eyebrow">LAYOUT PLANNER</p>
+      <h1>조각 배치 플래너</h1>
+      <p class="intro">아래 조각을 끌어 큰 공간에 놓아 보세요. 조각은 여러 번 사용할 수 있고, 서로 겹치지 않게 가까운 변에 착 붙어요.</p>
+    </header>
+    <section class="workspace" aria-label="조각 배치 작업 공간">
+      <div class="board-shell">
+        <p class="board-label"><strong>배치 공간</strong><span>515 × 470</span></p>
+        <div class="board" id="board" role="application" aria-label="515 곱하기 470 배치 공간"></div>
+      </div>
+      <p class="tip">조각을 드래그해 배치 · 조각의 × 버튼으로 개별 제거</p>
+      <section class="pieces-panel" aria-labelledby="pieces-heading">
+        <div class="panel-heading"><h2 id="pieces-heading">사용할 조각</h2><span class="count" id="count">배치된 조각 0개</span></div>
+        <div class="tray" id="tray"></div>
+        <div class="actions"><button class="clear-button" id="clear" type="button" disabled>전부 제거</button></div>
+        <p class="toast" id="message" role="status" aria-live="polite"></p>
+      </section>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const BOARD_W = 515;
+      const BOARD_H = 470;
+      const SNAP_DISTANCE = 10;
+      const types = [
+        { id: '1-1', w: 185, h: 265, color: '#d9e9dc', ink: '#41634a' },
+        { id: '1-2', w: 265, h: 185, color: '#d9e9dc', ink: '#41634a' },
+        { id: '2-1', w: 130, h: 180, color: '#f5e4bd', ink: '#80612a' },
+        { id: '2-2', w: 180, h: 130, color: '#f5e4bd', ink: '#80612a' },
+        { id: '3-1', w: 85, h: 265, color: '#dce8f4', ink: '#496783' },
+        { id: '3-2', w: 265, h: 85, color: '#dce8f4', ink: '#496783' },
+        { id: '4-1', w: 85, h: 125, color: '#efdfed', ink: '#765574' },
+        { id: '4-2', w: 125, h: 85, color: '#efdfed', ink: '#765574' },
+        { id: '5', w: 85, h: 85, color: '#f4dcd5', ink: '#87564b' }
+      ];
+      const board = document.getElementById('board');
+      const tray = document.getElementById('tray');
+      const count = document.getElementById('count');
+      const clearButton = document.getElementById('clear');
+      const message = document.getElementById('message');
+      const placed = [];
+      let nextId = 1;
+      let messageTimer;
 
-            <span class="sparkle s1">✦</span>
-            <span class="sparkle s2">✧</span>
-            <span class="sparkle s3">✦</span>
-
-            <div class="animals" aria-hidden="true">
-                <span class="animal">🦆</span>
-                <span class="animal">🦁</span>
-            </div>
-
-            <h1 class="title">
-                <span>🦄</span>
-                <span class="name">두기</span>
-                <span class="baby">👶</span>
-                탄생까지
-            </h1>
-
-            <div class="countdown-wrap">
-                <div id="countdown" class="countdown" aria-live="polite">--</div>
-                <div class="days">D-DAY · 2027.01.16</div>
-            </div>
-
-            <div class="family" aria-hidden="true">👨‍👩‍👧</div>
-
-            <div class="date" id="today"></div>
-        </section>
-    </main>
-
-    <script>
-        const target = new Date('2027-01-16T00:00:00+09:00');
-        const countdown = document.getElementById('countdown');
-        const today = document.getElementById('today');
-
-        function update() {
-            const now = new Date();
-            const diff = target.getTime() - now.getTime();
-
-            const days = Math.max(
-                0,
-                Math.ceil(diff / 86400000)
-            );
-
-            countdown.textContent = `D-${days}`;
-
-            today.textContent = now.toLocaleDateString('ko-KR', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
+      function announce(text) {
+        message.textContent = text;
+        clearTimeout(messageTimer);
+        if (text) messageTimer = setTimeout(() => { message.textContent = ''; }, 2500);
+      }
+      function updateCount() {
+        count.textContent = `배치된 조각 ${placed.length}개`;
+        clearButton.disabled = placed.length === 0;
+      }
+      function makeTray() {
+        types.forEach(type => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'tray-item';
+          button.setAttribute('aria-label', `${type.id}, ${type.w} 곱하기 ${type.h} 조각을 배치`);
+          const mini = document.createElement('span');
+          mini.className = 'mini-piece';
+          mini.textContent = type.id;
+          mini.style.cssText = `width:${Math.max(31, type.w * .31)}px;height:${Math.max(24, type.h * .19)}px;background:${type.color};color:${type.ink};`;
+          const label = document.createElement('span');
+          label.className = 'tray-label'; label.textContent = type.id;
+          const dims = document.createElement('span');
+          dims.className = 'tray-dims'; dims.textContent = `${type.w} × ${type.h}`;
+          button.append(mini, label, dims);
+          button.addEventListener('pointerdown', event => {
+            if (event.button !== 0 && event.pointerType === 'mouse') return;
+            event.preventDefault();
+            beginDrag(event, type, null, button);
+          });
+          button.addEventListener('click', event => {
+            if (button.dataset.dragged === 'true') { button.dataset.dragged = 'false'; return; }
+            const rect = board.getBoundingClientRect();
+            const x = Math.max(0, (BOARD_W - type.w) / 2);
+            const y = Math.max(0, (BOARD_H - type.h) / 2);
+            const pos = findOpenPosition(type, x, y);
+            if (!pos) { announce('공간이 부족해요. 기존 조각을 옮기거나 제거해 주세요.'); return; }
+            addPiece(type, pos.x, pos.y);
+            void rect;
+          });
+          tray.append(button);
+        });
+      }
+      function renderPiece(piece) {
+        const el = document.createElement('div');
+        el.className = 'piece';
+        el.dataset.pieceId = piece.uid;
+        el.setAttribute('role', 'group');
+        el.setAttribute('aria-label', `조각 ${piece.type.id}, ${piece.type.w} 곱하기 ${piece.type.h}`);
+        el.style.cssText = `left:${piece.x / BOARD_W * 100}%;top:${piece.y / BOARD_H * 100}%;width:${piece.type.w / BOARD_W * 100}%;height:${piece.type.h / BOARD_H * 100}%;background:${piece.type.color};color:${piece.type.ink};`;
+        const label = document.createElement('span'); label.textContent = piece.type.id;
+        const remove = document.createElement('button');
+        remove.type = 'button'; remove.className = 'remove'; remove.textContent = '×';
+        remove.setAttribute('aria-label', `${piece.type.id} 조각 제거`);
+        remove.addEventListener('pointerdown', event => event.stopPropagation());
+        remove.addEventListener('click', event => { event.stopPropagation(); removePiece(piece.uid); });
+        el.append(label, remove);
+        el.addEventListener('pointerdown', event => {
+          if (event.target.closest('.remove') || (event.button !== 0 && event.pointerType === 'mouse')) return;
+          event.preventDefault();
+          beginDrag(event, piece.type, piece, el);
+        });
+        board.append(el);
+        piece.el = el;
+        positionElement(piece);
+      }
+      function positionElement(piece) {
+        piece.el.style.left = `${piece.x / BOARD_W * 100}%`;
+        piece.el.style.top = `${piece.y / BOARD_H * 100}%`;
+      }
+      function addPiece(type, x, y) {
+        const piece = { uid: `piece-${nextId++}`, type, x, y, el: null };
+        placed.push(piece); renderPiece(piece); updateCount(); return piece;
+      }
+      function removePiece(uid) {
+        const index = placed.findIndex(piece => piece.uid === uid);
+        if (index < 0) return;
+        placed[index].el.remove(); placed.splice(index, 1); updateCount(); announce('조각을 제거했어요.');
+      }
+      function overlaps(a, x, y, b) {
+        return x < b.x + b.type.w && x + a.w > b.x && y < b.y + b.type.h && y + a.h > b.y;
+      }
+      function isValid(type, x, y, excludingUid) {
+        if (x < -0.01 || y < -0.01 || x + type.w > BOARD_W + .01 || y + type.h > BOARD_H + .01) return false;
+        return !placed.some(other => other.uid !== excludingUid && overlaps(type, x, y, other));
+      }
+      function findOpenPosition(type, preferredX, preferredY) {
+        const maxX = BOARD_W - type.w, maxY = BOARD_H - type.h;
+        const baseX = Math.max(0, Math.min(maxX, preferredX));
+        const baseY = Math.max(0, Math.min(maxY, preferredY));
+        if (isValid(type, baseX, baseY)) return { x: baseX, y: baseY };
+        for (let radius = 8; radius <= Math.max(BOARD_W, BOARD_H); radius += 8) {
+          for (let y = Math.max(0, baseY - radius); y <= Math.min(maxY, baseY + radius); y += 8) {
+            for (let x = Math.max(0, baseX - radius); x <= Math.min(maxX, baseX + radius); x += 8) {
+              if (isValid(type, x, y)) return { x, y };
+            }
+          }
         }
-
-        update();
-
-        setInterval(update, 60000);
-    </script>
+        return null;
+      }
+      function snapPosition(piece, x, y) {
+        let sx = Math.max(0, Math.min(BOARD_W - piece.type.w, x));
+        let sy = Math.max(0, Math.min(BOARD_H - piece.type.h, y));
+        const xs = [0, BOARD_W - piece.type.w];
+        const ys = [0, BOARD_H - piece.type.h];
+        for (const other of placed) {
+          if (other.uid === piece.uid) continue;
+          xs.push(other.x - piece.type.w, other.x + other.type.w);
+          ys.push(other.y - piece.type.h, other.y + other.type.h);
+        }
+        const nearest = (value, candidates) => {
+          let result = value, distance = SNAP_DISTANCE + .01;
+          for (const candidate of candidates) {
+            const gap = Math.abs(candidate - value);
+            if (gap < distance) { result = candidate; distance = gap; }
+          }
+          return result;
+        };
+        sx = nearest(sx, xs.filter(value => value >= 0 && value <= BOARD_W - piece.type.w));
+        sy = nearest(sy, ys.filter(value => value >= 0 && value <= BOARD_H - piece.type.h));
+        return { x: sx, y: sy };
+      }
+      function beginDrag(event, type, existing, source) {
+        const rect = board.getBoundingClientRect();
+        const scaleX = rect.width / BOARD_W, scaleY = rect.height / BOARD_H;
+        let piece = existing;
+        let created = false;
+        let startX, startY;
+        if (existing) {
+          startX = existing.x; startY = existing.y;
+        } else {
+          const pointerX = (event.clientX - rect.left) / scaleX;
+          const pointerY = (event.clientY - rect.top) / scaleY;
+          const x = Math.max(0, Math.min(BOARD_W - type.w, pointerX - type.w / 2));
+          const y = Math.max(0, Math.min(BOARD_H - type.h, pointerY - type.h / 2));
+          piece = addPiece(type, x, y); created = true;
+          source.dataset.dragged = 'true';
+        }
+        const originX = event.clientX, originY = event.clientY;
+        const offsetX = existing ? (event.clientX - rect.left) / scaleX - existing.x : type.w / 2;
+        const offsetY = existing ? (event.clientY - rect.top) / scaleY - existing.y : type.h / 2;
+        let moved = false;
+        piece.el.classList.add('dragging');
+        function move(moveEvent) {
+          const dx = (moveEvent.clientX - originX) / scaleX;
+          const dy = (moveEvent.clientY - originY) / scaleY;
+          if (Math.abs(dx) + Math.abs(dy) > 3) moved = true;
+          const currentRect = board.getBoundingClientRect();
+          const px = (moveEvent.clientX - currentRect.left) / (currentRect.width / BOARD_W) - offsetX;
+          const py = (moveEvent.clientY - currentRect.top) / (currentRect.height / BOARD_H) - offsetY;
+          const snapped = snapPosition(piece, px, py);
+          piece.x = snapped.x; piece.y = snapped.y; positionElement(piece);
+        }
+        function end(endEvent) {
+          document.removeEventListener('pointermove', move);
+          document.removeEventListener('pointerup', end);
+          document.removeEventListener('pointercancel', end);
+          piece.el.classList.remove('dragging');
+          const currentRect = board.getBoundingClientRect();
+          const inside = endEvent.clientX >= currentRect.left && endEvent.clientX <= currentRect.right && endEvent.clientY >= currentRect.top && endEvent.clientY <= currentRect.bottom;
+          if (!inside && created) { removePiece(piece.uid); announce('배치 공간 안에 놓아 주세요.'); return; }
+          if (!inside || !isValid(piece.type, piece.x, piece.y, piece.uid)) {
+            if (created) removePiece(piece.uid);
+            else { piece.x = startX; piece.y = startY; positionElement(piece); piece.el.classList.add('invalid'); setTimeout(() => piece.el?.classList.remove('invalid'), 500); }
+            announce('겹치지 않는 빈 공간에 놓아 주세요.'); return;
+          }
+          if (moved) announce('조각을 배치했어요.');
+        }
+        document.addEventListener('pointermove', move);
+        document.addEventListener('pointerup', end);
+        document.addEventListener('pointercancel', end);
+      }
+      clearButton.addEventListener('click', () => {
+        placed.splice(0).forEach(piece => piece.el.remove());
+        updateCount(); announce('모든 조각을 제거했어요.');
+      });
+      makeTray(); updateCount();
+    })();
+  </script>
 </body>
 </html>
